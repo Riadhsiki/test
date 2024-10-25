@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello produitController!{% endblock %}
+
+{% block body %}
+<h1>produit List </h1>
+<a href="{{path('app_produit_new')}}">Add produit</a> 
+<div>
+{% if produits is defined and produits is not empty %}
+<p>Tableau contient des données.</p>
+{% else %}
+<p>Tableau vide.</p>
+{% endif %}
+{% for i in produits %}
+<p> <b> name : </b> {{ i.nom  }} </p>
+<p> <b> date: </b> {{ i.date | date('m-d-y') }} </p>
+
+ <a href="{{path('app_produit_edit',{id: i.id})}}">Edit<a/>
+ <a href="{{path('app_produit_delete',{id: i.id})}}">Delete<a/>    
+<hr>
+{% else %}
+<p>Le Tableau est vide.</p>
+{% endfor %}
+
+</div>
+{% endblock %}

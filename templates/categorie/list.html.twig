@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello categorieController!{% endblock %}
+
+{% block body %}
+<h1>categorie List </h1>
+<a href="{{path('app_categorie_new')}}">Add categorie</a> 
+<div>
+{% if categories is defined and categories is not empty %}
+<p>Tableau contient des données.</p>
+{% else %}
+<p>Tableau vide.</p>
+{% endif %}
+{% for i in categories %}
+<p> <b> name : </b> {{ i.nom  }} </p>
+<p> <b> description : </b> {{ i.description }} </p>
+
+ <a href="{{path('app_categorie_edit',{id: i.id})}}">Edit<a/>
+<a href="{{path('app_categorie_remove',{id: i.id})}}">Delete<a/>  
+<hr>
+{% else %}
+<p>Le Tableau est vide.</p>
+{% endfor %}
+
+</div>
+{% endblock %}
